@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clona el repositorio desde GitHub
-                git 'https://github.com/colombo1986/BASIC-CRUD-thymeleaf.git'
+                git 'https://github.com/s3codecL/app-gestion-eventos.git'
             }
         }
 
