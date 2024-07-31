@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Evento</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-Lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"> Control de evento</a>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/nuevo"> Editar evento</a></li>
+        </ul>
+
+</nav>
+
+<br>
+
+<div class = "container">
+    <div class="row">
+        <div class ="col-lg-7 col-md-7 col-sm-7 container justify-content-center card">
+         <h1 class ="text-center">Editar evento</h1>
+         <div class="card-body">
+            <form th:action="@{/guardar}" th:object="${evento}" method="post">
+
+                <div class="form-group">
+                    <label>Evento ID :</label>
+                    <input type="text" name ="nombre" th:field="*{id}" class="form-control" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre :</label>
+                    <input type="text" name ="nombre" th:field="*{nombre}" class="form-control" placeholder="Digite el nombre del evento" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha :</label>
+                    <input type="date" name ="fecha" th:field="*{fecha}" class="form-control" placeholder="Digite la fecha del evento" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Invitados :</label>
+                    <input type="number" name ="nombre" th:field="*{invitados}" class="form-control" placeholder="Digite la cantidad de invitados" required>
+                </div>
+
+                <label for="salon">Seleccionar Salón:</label>
+                <select id="salon" name="salon">
+                    <option value="">Seleccione un salón</option>
+                    <option th:each="salon : ${salones}"
+                            th:value="${salon.id}"
+                            th:text="${salon.nombre} + ' capacidad:&nbsp;' + ${salon.capacidad} + ' descripcion:&nbsp;'+ ${salon.descripcion} "></option>
+                </select>
+                <br>
+                <br>
+
+                <div class="box-footer">
+                 <button class="btn btn-success">Guardar</button>
+                </div>
+
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

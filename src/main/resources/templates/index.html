@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Control de eventos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-Lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"> Control de Eventos</a>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/nuevo"> Agregar Evento</a></li>
+        </ul>
+
+
+</nav>
+<br>
+
+
+</form>
+
+<div class="container text-center">
+    <form class ="form-inline" th:action="@{/}">
+        <div class="form-group mb-2">
+         <label>Filtrar: </label>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="Digite el valor a buscar main" required>
+            </div>
+                <input type="submit" class="btn btn-info mb-2" value ="Buscar">
+                &nbsp; &nbsp;
+
+            <input type="button" class="btn btn-secondary mb-2" value ="Limpiar" onclick="limpiarCampos()">
+        </div>
+    </form>
+
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Invitados</th>
+        <th scope="col">Salon</th>
+        <th scope="col">Capacidad</th>
+        <th scope="col">Acciones</th>
+        </thead>
+        <tbody>
+        <tr th:each="evento: ${listarEventos}">
+            <td th:text="${evento.id}"></td>
+            <td th:text="${evento.nombre}"></td>
+            <td th:text="${evento.fecha}"></td>
+            <td th:text="${evento.invitados}"></td>
+            <td th:text="${evento.salon.nombre}"></td>
+            <td th:text="${evento.salon.capacidad}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{'/editar/' + ${evento.id}}">Editar</a>
+                <a class="btn btn-danger" th:href="@{'/eliminar/' + ${evento.id}}">Eliminar</a>
+            </td>
+        <tr>
+
+    </table>
+    </tr>
+    </tr>
+    </tbody>
+</div>
+
+<script type="text/javascript">
+    function limpiarCampos(){
+        window.location='/'
+    }
+
+</script>
+
+</body>
+</html>
