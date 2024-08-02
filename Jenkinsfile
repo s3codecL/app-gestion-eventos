@@ -71,7 +71,7 @@ pipeline {
     }
 
 
-
+/*
      def COLOR_MAP = [
          'SUCCESS': 'bueno',
          'FAILURE': 'peligro'
@@ -90,6 +90,6 @@ pipeline {
               Más información en: ${env.BUILD_URL}*"
          }
      }
-
+     */
 
 }
